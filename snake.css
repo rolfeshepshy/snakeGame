@@ -36,7 +36,8 @@ td{
 }
 
 .contenedor-escenario{
-    background-image: url('/nokia-phones.webp');
+    background-image: url('./nokia-phones.webp');
+    background-color: aquamarine;
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center;
@@ -50,7 +51,7 @@ td{
 
 .vibora{
     /* background-color: rgb(24, 24, 24); */
-    background-image: url('/vibora.webp');
+    background-image: url('./vibora.webp');
     filter: hue-rotate(-30deg) contrast(25%) brightness(40%);
     background-repeat: no-repeat;
     background-size: contain;
