@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link href="snake.css" rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor-escenario">
+        <div class="HUD">
+            <h1>Snake!</h1>
+            <div class="HUD-Puntos">
+                <p>Puntos:</p>
+                <input type="number" disabled>
+            </div>
+            <div class="HUD-Puntos">
+                <p>Vidas</p>
+                <input type="number" disabled>
+            </div>
+        </div>
+        <table class="escenario" id="escenario">
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="message-container" class="message-container hidden">
+        <div class="message-div">
+            <h1>Tamaño de Cuadricula</h1>
+            <div class="cuadritos-form">
+                <input class="grid-pos" type="number">
+                <p style="margin-left: 1em;margin-right:1em;">x</p>
+                <input class="grid-pos" type="number">
+            </div>
+            <a class="btn-play">Play!</a>
+        </div>
+    </div>
+</body>
+<script src="snake.js"></script>
+</html>

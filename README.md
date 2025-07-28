@@ -1,2 +1,2 @@
-# snakeGame
-Juego de la Vibora | Recurso Educativo
+# snake
+Juego de la Vibora
