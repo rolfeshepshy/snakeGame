@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Nokia CellPhone"; /* Choose a descriptive name for your font */
+    src: url("./fonts/nokiafc22.ttf") format("truetype"); /* Path to your .ttf file */
+}
+
+:root {
+    --primary-font: "Nokia CellPhone";
+}
+
 body{
     /* background-size: 100%; */
     font-family: 'Courier New', Courier, monospace;
@@ -11,9 +20,10 @@ p{
 }
 
 table{
-    margin-top: 50px;
-    width: 49vw;
-    aspect-ratio: 1 / .65; /* height will match width */    
+    margin-top: 175px;
+    width: 470px;
+    max-height: 500px;
+    aspect-ratio: 1 / .80; 
     border: solid rgba(38, 58, 41, 0.73) 5px;
     filter: blur(.9px);
     border-radius: 10px;
@@ -22,8 +32,8 @@ table{
     border-collapse: collapse;
 }
 
-tr{
-    /* box-shadow: -1px -1px 0px yellow */
+h1{
+    font-family: var(--primary-font);
 }
 
 td{
@@ -37,10 +47,10 @@ td{
 
 .contenedor-escenario{
     background-image: url('./nokia-phones.webp');
-    background-color: aquamarine;
+    background-color: rgb(33, 58, 97);
     background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center;
+    background-size: 2500px auto;
+    background-position: center -450px;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -55,14 +65,20 @@ td{
     filter: hue-rotate(-30deg) contrast(25%) brightness(40%);
     background-repeat: no-repeat;
     background-size: contain;
-
+    
 }
 
 .bolitas{
-    background-color: orange;
+    background-image: url('./comida.webp');
+    filter: hue-rotate(-30deg) contrast(25%) brightness(40%);
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background-color: orange; */
 }
 
 .HUD{
+    position: absolute;
+    top: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -102,12 +118,14 @@ input[type="number"]{
 }
 
 .message-div{
-    width: 500px;
+    margin-bottom: 150px;
+    width: 400px;
     height: 300px;
-    background-color: rgb(27, 33, 26);
+    /* background-color: rgb(141, 188, 132); */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
 }
 
@@ -119,16 +137,19 @@ input[type="number"]{
 }
 
 .btn-play{
+    font-family: var(--primary-font);
+    font-size: 2rem;
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgb(92, 92, 255);
+    padding: 15px 30px 15px 30px;
+    /* border-radius: 10px; */
+    background-color: rgba(64, 81, 65, 0.779);
 }
 
 .btn-play:hover{
-    background-color: aliceblue;
+    color: #a7daba;
+    background-color: rgb(52, 66, 45);
 }
 
 .grid-pos{

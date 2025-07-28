@@ -1,12 +1,13 @@
 
 const escenario = document.getElementById('escenario');
+const play = document.getElementById('play');
 
 // Nuestra variable de posicionamiento
 
 let escenarioGrid = [];
 let ultimaTecla = "d";
 let frames = 120;
-let grid = [78/2,120/2];
+let grid = [24, 30 ];
 for(let n in document.getElementsByClassName('grid-pos')){
     document.getElementsByClassName('grid-pos').value = grid[n];
 }
@@ -65,6 +66,11 @@ document.addEventListener('keypress', (e)=>{
             break;
     }
     actionLogic(e.key)
+})
+
+// Cuando se presiona Play!
+play.addEventListener('click',(e)=>{
+    window.location.reload();
 })
 
 function actionLogic(key){
@@ -204,9 +210,9 @@ function gameOver(){
     let msg = document.getElementById('message-container');
     msg.classList.toggle('hidden')
 
-    setTimeout(()=>{
-    window.location.reload()
-    }, 60000)
+    // setTimeout(()=>{
+    // window.location.reload()
+    // }, 60000)
 }
 
 createBolita();
