@@ -14,6 +14,7 @@ down.addEventListener('touchstart', cruceta)
 
 
 function cruceta(){
+    this.preventDefault();
     console.log(this.id);
     console.log(joystickPic.classList.contains('up'))
     switch (this.id) {
