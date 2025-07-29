@@ -6,21 +6,12 @@ const left = document.getElementById('left-joystick')
 const right = document.getElementById('right-joystick')
 const down = document.getElementById('down-joystick')
 const joystickPic = document.getElementsByClassName('joystick cont pic')[0]
-console.log(joystickPic)
 
 up.addEventListener('touchstart', cruceta)
 left.addEventListener('touchstart', cruceta)
 right.addEventListener('touchstart', cruceta)
 down.addEventListener('touchstart', cruceta)
 
-up.addEventListener('touchend', reseteaCruceta)
-left.addEventListener('touchend', reseteaCruceta)
-right.addEventListener('touchend', reseteaCruceta)
-down.addEventListener('touchend', reseteaCruceta)
-
-function reseteaCruceta(){
-    joystickPic
-}
 
 function cruceta(){
     console.log(this.id);
