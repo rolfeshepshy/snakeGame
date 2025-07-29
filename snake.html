@@ -7,17 +7,23 @@
     <link href="snake.css" rel="stylesheet">
 </head>
 <body>
+    <div class="joystick cont back"></div>
+    <div class="joystick cont pic"></div>
+    <div id="joystick" class="joystick cont">
+        <div style="width: 30%;" class="joystick">
+            <a id="up-joystick"></a>
+        </div>
+        <div style="justify-content: space-between;" class="joystick">
+            <a id="left-joystick"></a>
+            <a id="right-joystick"></a>
+        </div>
+        <div style="width: 30%;" class="joystick">
+            <a id="down-joystick"></a>
+        </div>
+    </div> 
     <div class="contenedor-escenario">
         <div class="HUD">
             <h1 style="color: black;background-color:white; padding-left:1em;padding-right:1em">Snake!</h1>
-            <!-- <div class="HUD-Puntos">
-                <p>Puntos:</p>
-                <input type="number" disabled>
-            </div>
-            <div class="HUD-Puntos">
-                <p>Vidas</p>
-                <input type="number" disabled>
-            </div> -->
         </div>
         <table class="escenario" id="escenario">
             <tbody>
@@ -27,12 +33,6 @@
     </div>
     <div id="message-container" class="message-container hidden">
         <div class="message-div">
-            <!-- <h1>Tamaño de Cuadricula</h1>
-            <div class="cuadritos-form">
-                <input class="grid-pos" type="number">
-                <p style="margin-left: 1em;margin-right:1em;">x</p>
-                <input class="grid-pos" type="number">
-            </div> -->
             <a id="play" class="btn-play">Play!</a>
         </div>
     </div>

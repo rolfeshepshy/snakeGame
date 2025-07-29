@@ -161,3 +161,179 @@ input[type="number"]{
 .hidden{
     display: none;
 }
+
+.joystick{
+    display: none;
+}
+
+/* Small devices (phones, up to 600px) */
+@media (max-width: 600px) {
+    .contenedor-escenario{
+        background-image: url('./nokia-phones.webp');
+        background-color: rgb(33, 58, 97);
+        background-repeat: no-repeat;
+        background-size: 1600px auto;
+        background-position: center -300px;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:start;
+    }
+    table{
+        margin-top: -140px;
+        width: 300px;
+        max-height: 500px;
+        aspect-ratio: 1 / .80;
+        border: solid rgba(38, 58, 41, 0.73) 5px;
+        filter: blur(0.3px);
+        border-radius: 10px;
+        background-color: rgba(135, 185, 130, 0);
+        gap: 0px;
+        border-collapse: collapse;
+    }
+    
+    h1{
+        font-size: 3em;
+        margin-top: -50px;
+        font-family: var(--primary-font);
+    }
+    .vibora{
+        /* background-color: rgb(24, 24, 24); */
+        background-image: url('./vibora.webp');
+        filter: hue-rotate(-30deg) contrast(25%) brightness(40%);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    td{
+        /* width: 18px; */
+        /* height: 18px; */
+        transition: background-color 120ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        /* background-color: rgba(14, 35, 18, 0.511);s */
+        /* border-radius: 3px; */
+        padding: 0px;
+    }
+
+    .joystick{
+        /* transition: all 100ms cubic-bezier(0.755, 0.05, 0.855, 0.06); */
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .back{
+        background: #000000;
+        background: linear-gradient(0deg,rgba(0, 0, 0, 0.577) 75%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .cont{
+        justify-content: center;
+        align-items: center;
+        bottom: 0px;
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        height: 50vh;
+    }
+    
+    .joystick.cont.pic{
+        /* z-index: 5; */
+        background-color: rgba(255, 255, 255, 0);
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: visible;
+        background-size: 300px;
+        background-image: url('./cruceta.webp');
+    }
+
+    .up{
+        background-image: url('./cruceta.webp');
+    }
+    .left{
+        /* background-image: url('./cruceta.webp'); */
+        transform: rotate(-90deg);
+    }
+    .right{
+        background-image: url('./cruceta.webp');
+        transform: rotate(90deg);
+    }
+    .down{
+        background-image: url('./cruceta.webp');
+        transform: rotate(180deg);
+    }
+
+    #up-joystick{
+        position: absolute;
+        display: block;
+        width: 130px;
+        height: 50%;
+    }
+    #left-joystick{
+        /* position: absolute; */
+        display: block;
+        width: 40%;
+        height: 100%;
+    }
+    #right-joystick{
+        /* position: absolute; */
+        display: block;
+        width: 40%;
+        height: 100%;
+    }
+    #down-joystick{
+        margin-top: -15%;
+        position: absolute;
+        display: block;
+        width: 130px;
+        height: 50%;
+    }
+
+}
+
+/* Medium devices (tablets, 601px–900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .contenedor-escenario{
+        background-image: url('./nokia-phones.webp');
+        background-color: rgb(33, 58, 97);
+        background-repeat: no-repeat;
+        background-size: 3000px auto;
+        background-position: center -650px;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:start;
+    }
+    table{
+        margin-top: 100px;
+        width: 550px;
+        max-height: 500px;
+        aspect-ratio: 1 / .80; 
+        border: solid rgba(38, 58, 41, 0.73) 5px;
+        filter: blur(.9px);
+        border-radius: 10px;
+        background-color: rgba(135, 185, 130, 0);
+        gap: 0px;
+        border-collapse: collapse;
+    }
+    
+    h1{
+        margin-top: -30px;
+        font-family: var(--primary-font);
+    }
+
+}
+
+/* Large devices (laptops, 901px–1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
+
+
+
+}
+
+/* Extra large devices (desktops, 1201px and up) */
+@media (min-width: 1201px) {
+}

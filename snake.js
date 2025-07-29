@@ -1,6 +1,59 @@
 
 const escenario = document.getElementById('escenario');
 const play = document.getElementById('play');
+const up = document.getElementById('up-joystick')
+const left = document.getElementById('left-joystick')
+const right = document.getElementById('right-joystick')
+const down = document.getElementById('down-joystick')
+const joystickPic = document.getElementsByClassName('joystick cont pic')[0]
+console.log(joystickPic)
+
+up.addEventListener('touchstart', cruceta)
+left.addEventListener('touchstart', cruceta)
+right.addEventListener('touchstart', cruceta)
+down.addEventListener('touchstart', cruceta)
+
+up.addEventListener('touchend', reseteaCruceta)
+left.addEventListener('touchend', reseteaCruceta)
+right.addEventListener('touchend', reseteaCruceta)
+down.addEventListener('touchend', reseteaCruceta)
+
+function reseteaCruceta(){
+    joystickPic
+}
+
+function cruceta(){
+    console.log(this.id);
+    console.log(joystickPic.classList.contains('up'))
+    switch (this.id) {
+        case "up-joystick":
+            if(ultimaTecla == "s"){return}
+            joystickPic.className = "joystick cont pic";
+            joystickPic.classList.contains('up')?{}: joystickPic.classList.toggle('up');
+            actionLogic("w")
+            break;
+        case "left-joystick":
+            if(ultimaTecla == "d"){return}
+            joystickPic.className = "joystick cont pic";
+            joystickPic.classList.contains('left')?{}: joystickPic.classList.toggle('left');
+            actionLogic("a")
+            break;
+        case "right-joystick":
+            if(ultimaTecla == "a"){return}
+            joystickPic.className = "joystick cont pic";
+            joystickPic.classList.contains('right')?{}: joystickPic.classList.toggle('right');
+            actionLogic("d")
+            break;
+        case "down-joystick":
+            if(ultimaTecla == "w"){return}
+            joystickPic.className = "joystick cont pic";
+            joystickPic.classList.contains('down')?{}: joystickPic.classList.toggle('down');
+            actionLogic("s")
+            break;
+        default:
+            break;
+    }
+}
 
 // Nuestra variable de posicionamiento
 
@@ -14,23 +67,23 @@ for(let n in document.getElementsByClassName('grid-pos')){
 let gameOverStatus = false;
 
 for(let i=0;i<grid[0];i++){
-    console.log(i);
+    //console.log(i);
     const tr = document.createElement('tr');
     for(let k=0;k<grid[1];k++){
         const td = document.createElement('td')
         tr.appendChild(td);
     }
-    console.log(escenario)
+    //console.log(escenario)
     escenario.children[0].appendChild(tr);
 }
 
 const todosLosTD = document.getElementsByTagName('tbody');
 
 for(n of todosLosTD[0].children){
-    // console.log(n);
+    // //console.log(n);
     let hilera = []; 
     for(k of n.children){
-        // console.log(k)
+        // //console.log(k)
         hilera.push(k);
     }
     escenarioGrid.push(hilera);
@@ -129,7 +182,7 @@ function actualizeViboraPos(){
     }
 
     
-    // console.log("%cPOSICION DE LA VIBORA:","background-color:RED;font-size:18px")
+    // //console.log("%cPOSICION DE LA VIBORA:","background-color:RED;font-size:18px")
     // console.table(viboraPos);
     framerate = setInterval(frameBuffer,frames);
     framerate;
@@ -138,7 +191,7 @@ function actualizeViboraPos(){
 let framerate = setInterval(frameBuffer,frames)
 
 function frameBuffer(){
-    console.log("Frame")
+    //console.log("Frame")
     actionLogic(ultimaTecla)
     if(bolitasPos.length == 0){createBolita()}
     // console.clear();
@@ -181,8 +234,8 @@ function randomizerBolitas(){
 function createBolita(){
     // Que nos de un numero aleatorio
     let randomPos = randomizerBolitas();
-    console.log(randomPos, viboraPos)
-    console.log("INCLUDES:" + viboraPos.includes(randomPos))
+    //console.log(randomPos, viboraPos)
+    //console.log("INCLUDES:" + viboraPos.includes(randomPos))
     // Usemos ese numero para saber si existe en la posicion de la vibora.
     for(n of viboraPos){
         if(compareArrays(randomPos, n)){
@@ -190,7 +243,7 @@ function createBolita(){
             return;
         }
     }
-    // console.log("RANDOM POS: ", randomPos)
+    // //console.log("RANDOM POS: ", randomPos)
     escenarioGrid[randomPos[0]][randomPos[1]].className = "bolitas";
     bolitasPos.push([randomPos[0],randomPos[1]])
 }
@@ -205,7 +258,7 @@ function compareArrays(array1, array2){
 
 function gameOver(){
     gameOverStatus = true;
-    console.log("PERDISTE!")
+    //console.log("PERDISTE!")
 
     let msg = document.getElementById('message-container');
     msg.classList.toggle('hidden')
@@ -216,3 +269,4 @@ function gameOver(){
 }
 
 createBolita();
+
