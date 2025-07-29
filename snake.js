@@ -8,15 +8,19 @@ const down = document.getElementById('down-joystick')
 const joystickPic = document.getElementsByClassName('joystick cont pic')[0]
 
 up.addEventListener('touchstart', cruceta)
+up.addEventListener('touchend', (e)=>{e.preventDefault()})
+
 left.addEventListener('touchstart', cruceta)
+left.addEventListener('touchend', (e)=>{e.preventDefault()})
 right.addEventListener('touchstart', cruceta)
+right.addEventListener('touchend', (e)=>{e.preventDefault()})
 down.addEventListener('touchstart', cruceta)
+down.addEventListener('touchend', (e)=>{e.preventDefault()})
 
 
 function cruceta(){
-    this.preventDefault();
-    console.log(this.id);
-    console.log(joystickPic.classList.contains('up'))
+    // console.log(this.id);
+    // console.log(joystickPic.classList.contains('up'))
     switch (this.id) {
         case "up-joystick":
             if(ultimaTecla == "s"){return}
