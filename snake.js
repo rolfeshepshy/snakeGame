@@ -1,36 +1,44 @@
+/**
+ * Declaración de constantes:
+ * Aqui declaramos los valores constantes. 
+ * 
+ * Los valores constantes son cosas como elementos 
+ * que necesitaremos para manipular el DOM.
+ * 
+ * Las constantes se llaman constantes porque no se 
+ * pueden asignar otro valor del que fue declarado.
+ */
+const escenario = document.getElementById('escenario'); // Nuestra Tabla que sera el mapa del juego (Cuadricula)
+const play = document.getElementById('play');           // Nuestro boton que inicia el juego
+const up = document.getElementById('up-joystick')       // PARA MOBIL
+const left = document.getElementById('left-joystick')   // PARA MOBIL
+const right = document.getElementById('right-joystick') // PARA MOBIL
+const down = document.getElementById('down-joystick')   // PARA MOBIL
+const joystickPic = document
+.getElementsByClassName('joystick cont pic')[0]         // Fondo con la imagen de la cruceta
 
-const escenario = document.getElementById('escenario');
-const play = document.getElementById('play');
-const up = document.getElementById('up-joystick')
-const left = document.getElementById('left-joystick')
-const right = document.getElementById('right-joystick')
-const down = document.getElementById('down-joystick')
-const joystickPic = document.getElementsByClassName('joystick cont pic')[0]
-console.log(joystickPic)
-
-up.addEventListener('touchstart', cruceta)
+// IMPLEMENTACION PARA MOBILES!!!
+// Hitbox de la cruceta para mobiles
+up.addEventListener('touchstart', cruceta) // Cada vez que se toque esta area, ejecuta la funcion `cruceta`
 left.addEventListener('touchstart', cruceta)
 right.addEventListener('touchstart', cruceta)
 down.addEventListener('touchstart', cruceta)
 
-up.addEventListener('touchend', reseteaCruceta)
-left.addEventListener('touchend', reseteaCruceta)
-right.addEventListener('touchend', reseteaCruceta)
-down.addEventListener('touchend', reseteaCruceta)
-
-function reseteaCruceta(){
-    joystickPic
-}
-
+/**
+ * 
+ * Funcion que se ejecuta al presionar la cruceta.
+ * De aqui se cambia la dirección de la imagen de la cruceta.
+ * Despues se pasa a la funcion de logica de acciones y se ejecuta el siguiente paso.
+ * 
+ * @returns Void
+ */
 function cruceta(){
-    console.log(this.id);
-    console.log(joystickPic.classList.contains('up'))
-    switch (this.id) {
-        case "up-joystick":
-            if(ultimaTecla == "s"){return}
-            joystickPic.className = "joystick cont pic";
+    switch (this.id) { //Estamos buscando un caso que sea igual al elemento que fue presionado en la cruceta
+        case "up-joystick": 
+            if(ultimaTecla == "s"){return} // si se presiono la misma dirección al que la serpiente ya esta. No se hara nada.
+            joystickPic.className = "joystick cont pic"; // Se cambia la direccion de la cruceta
             joystickPic.classList.contains('up')?{}: joystickPic.classList.toggle('up');
-            actionLogic("w")
+            actionLogic("w") // Empezamos la logica del juego
             break;
         case "left-joystick":
             if(ultimaTecla == "d"){return}
@@ -55,45 +63,43 @@ function cruceta(){
     }
 }
 
-// Nuestra variable de posicionamiento
-
+// Nuestra variable que contiene todas las posiciones. (Osea Mapa)
 let escenarioGrid = [];
+// La ultima tecla que se presiono. Esto nos ayudara a mover la serpiente.
 let ultimaTecla = "d";
+// La velocidad de el juego
 let frames = 120;
-let grid = [24, 30 ];
-for(let n in document.getElementsByClassName('grid-pos')){
-    document.getElementsByClassName('grid-pos').value = grid[n];
-}
+// El tamaño de nuestra cuadricula.
+let grid = [24, 30 ]; // *  [Y,X]
+// Estado de Game Over
 let gameOverStatus = false;
 
-for(let i=0;i<grid[0];i++){
-    //console.log(i);
-    const tr = document.createElement('tr');
-    for(let k=0;k<grid[1];k++){
-        const td = document.createElement('td')
-        tr.appendChild(td);
+// Forma dinamica de llenar la cuadricula con elementos que
+// Seran nuestras celdas para dibujar la serpiente.
+for(let i=0;i<grid[0];i++){ // *Bucle que itera por el eje Y (Lee de arriba a abajo)
+    const tr = document.createElement('tr'); // Crea una Hilera
+    for(let k=0;k<grid[1];k++){ // *Bucle que itera por el eje X (Lee de izquierda a derecha)
+        const td = document.createElement('td') // Crea una celda
+        tr.appendChild(td); // Mete la celda en la hilera
     }
-    //console.log(escenario)
-    escenario.children[0].appendChild(tr);
+    escenario.children[0].appendChild(tr); // Mete la hilera a la tabla
 }
 
+// Todas las celdas (TD) metelas en una lista 2D para referenciar y utilzar en la logica del juego
 const todosLosTD = document.getElementsByTagName('tbody');
-
 for(n of todosLosTD[0].children){
-    // //console.log(n);
     let hilera = []; 
     for(k of n.children){
-        // //console.log(k)
         hilera.push(k);
     }
     escenarioGrid.push(hilera);
 }
 
 // Iniciando Coordenadas de la cabeza de la vibora
-// let viboraPos = {x:1,y:2};
+// let viboraPos = [[x:1,y:2]];
 // [Y,X]
 let viboraPos = [[1,0]]
-// Iniciando Coordenadas de la comida
+// Iniciando Coordenadas de la primera comida
 let bolitasPos = [[3,3]]
 // Iniciando la posicion de la vibora
 escenarioGrid[viboraPos[0][0]][viboraPos[0][1]].className = "vibora";
@@ -126,6 +132,8 @@ play.addEventListener('click',(e)=>{
     window.location.reload();
 })
 
+// !! SUPER IMPORTANTE  :)
+// * La logica del juego que sucede CADA CUADRO del juego.
 function actionLogic(key){
     if(gameOverStatus){return}
     // Para el bucle de eventos para revisar colisiones o efectos
@@ -181,9 +189,6 @@ function actualizeViboraPos(){
         escenarioGrid[n[0]][n[1]].className = "vibora";
     }
 
-    
-    // //console.log("%cPOSICION DE LA VIBORA:","background-color:RED;font-size:18px")
-    // console.table(viboraPos);
     framerate = setInterval(frameBuffer,frames);
     framerate;
 }
@@ -191,10 +196,8 @@ function actualizeViboraPos(){
 let framerate = setInterval(frameBuffer,frames)
 
 function frameBuffer(){
-    //console.log("Frame")
     actionLogic(ultimaTecla)
     if(bolitasPos.length == 0){createBolita()}
-    // console.clear();
 
 }
 
@@ -212,12 +215,11 @@ function collision(newPos){
         viboraPos.push(newPos)
         bolitasPos.pop();
         createBolita();
+        console.log(viboraPos);
     }else if(escenarioGrid[newPos[0]][newPos[1]].className.includes('vibora')){
-
         gameOver();
     }else if(escenarioGrid[newPos[0]][newPos[1]].className == ("")){
         escenarioGrid[viboraPos[viboraPos.length -1][0]][viboraPos[viboraPos.length -1][1]].classList.toggle("vibora");
-        
     }
 
 }
@@ -243,7 +245,6 @@ function createBolita(){
             return;
         }
     }
-    // //console.log("RANDOM POS: ", randomPos)
     escenarioGrid[randomPos[0]][randomPos[1]].className = "bolitas";
     bolitasPos.push([randomPos[0],randomPos[1]])
 }
